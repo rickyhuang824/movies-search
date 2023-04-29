@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
                 title="Search Your Favorite Movie Now"
                 subtitle="You could search for your favorite movie and bookmark it for later"
                 ctaText="Seach"
-                ctaLink="/"
+                ctaLink="/search"
             >
                 Home
             </Hero>

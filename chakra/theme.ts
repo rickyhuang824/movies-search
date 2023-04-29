@@ -18,16 +18,16 @@ export const theme = extendTheme({
             900: "#003F5E",
         },
         secondary: {
-            50: "#FEEAE6",
-            100: "#FED7CC",
-            200: "#FDBA9B",
-            300: "#FF8A4C",
-            400: "#FF5E1F",
-            500: "#D73B01",
-            600: "#AD2E01",
-            700: "#832101",
-            800: "#4F1302",
-            900: "#1A0402",
+            50: "#F4F1F7",
+            100: "#DAD4E7",
+            200: "#C0B9D7",
+            300: "#A59EC7",
+            400: "#8B83B7",
+            500: "#7068A7",
+            600: "#564D97",
+            700: "#3C3287",
+            800: "#221773",
+            900: "#0B0060",
         },
     },
     fonts: {
@@ -62,12 +62,15 @@ export const theme = extendTheme({
     },
     styles: {
         global: {
+            body: {
+                background: "#C5E4F3",
+            },
             a: {
                 color: "blue.500",
                 textDecoration: "none",
                 transition: "color 0.3s ease",
                 _hover: {
-                    color: "purple.500",
+                    color: "#7068A7",
                 },
             },
         },

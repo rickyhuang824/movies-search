@@ -15,14 +15,13 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ title, subtitle, ctaText, ctaLink }) => {
     return (
         <Flex
-            alignItems={{ base: "start", md: "center" }}
+            alignItems={{ base: "start", lg: "center" }}
             height="100vh"
             bg="transparent"
             direction="row"
-            background={{ base: "transparent", md: "primary.100" }}
         >
             <Box
-                display={{ base: "none", md: "block" }}
+                display={{ base: "none", lg: "block" }}
                 flex="3"
                 h="100%"
                 pos="relative"
@@ -35,7 +34,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, ctaText, ctaLink }) => {
                 />
             </Box>
             <Box
-                display={{ base: "block", md: "none" }}
+                display={{ base: "block", lg: "none" }}
                 h="100%"
                 pos="absolute"
                 zIndex="-1"
@@ -53,14 +52,14 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, ctaText, ctaLink }) => {
                 alignItems="center"
                 justifyContent="center"
                 flex="2"
-                color={{ base: "primary.50", md: "teal.600" }}
+                color={{ base: "primary.50", lg: "teal.600" }}
             >
                 <Box textAlign="left" p={6}>
                     <Heading as="h1" fontSize="6xl" mb={6}>
                         {title}
                     </Heading>
                     <Text
-                        display={{ base: "none", md: "block" }}
+                        display={{ base: "none", lg: "block" }}
                         fontSize="2xl"
                         mb={8}
                     >

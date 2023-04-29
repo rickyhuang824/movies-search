@@ -1,11 +1,6 @@
 import {
     Box,
     Button,
-    Drawer,
-    DrawerBody,
-    DrawerCloseButton,
-    DrawerContent,
-    DrawerOverlay,
     Flex,
     IconButton,
     Link,
@@ -14,8 +9,6 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import NextLink from "next/link";
 import { useSession, signOut } from "next-auth/react";
-import Image from "next/image";
-import { motion } from "framer-motion";
 import { BiCameraMovie } from "react-icons/bi";
 import NavigationDrawer from "./navigation-drawer";
 import SpinnerDiv from "@/ui/spinner-div";
@@ -72,7 +65,12 @@ const Navbar = () => {
                     <Link as={NextLink} mx={2} href={"/"} fontWeight="bold">
                         Home
                     </Link>
-                    <Link as={NextLink} mx={2} href={"/"} fontWeight="bold">
+                    <Link
+                        as={NextLink}
+                        mx={2}
+                        href={"/search"}
+                        fontWeight="bold"
+                    >
                         Search
                     </Link>
                     <Link as={NextLink} mx={2} href={"/"} fontWeight="bold">
@@ -97,7 +95,7 @@ const Navbar = () => {
                                 variant="outline"
                                 as={NextLink}
                                 mr={4}
-                                href={"/"}
+                                href={"/sign-in"}
                             >
                                 Sign In
                             </Button>
