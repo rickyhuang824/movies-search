@@ -18,17 +18,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { BiCameraMovie } from "react-icons/bi";
 import NavigationDrawer from "./navigation-drawer";
-
-const SpinnerIcon = () => {
-    return (
-        <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-        >
-            <BiCameraMovie size={40} color="purple" />
-        </motion.div>
-    );
-};
+import SpinnerDiv from "@/ui/spinner-div";
 
 const Navbar = () => {
     // const [session] = useSession();
@@ -50,7 +40,9 @@ const Navbar = () => {
                 flexGrow={{ base: "4", md: "1" }}
             >
                 <NextLink href="/">
-                    <SpinnerIcon />
+                    <SpinnerDiv>
+                        <BiCameraMovie size={40} color="purple" />
+                    </SpinnerDiv>
                 </NextLink>
             </Flex>
 
