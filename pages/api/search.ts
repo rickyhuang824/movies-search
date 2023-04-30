@@ -30,8 +30,6 @@ const handler = async (
 
         try {
             const reponse = await axios.request(config);
-            console.log(reponse.data);
-
             res.status(200).json(reponse.data);
         } catch (err: any) {
             res.status(500).json({
