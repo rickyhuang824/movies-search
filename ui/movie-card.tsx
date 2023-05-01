@@ -25,7 +25,13 @@ const MovieCard = ({
             whileTap={{ scale: 0.95 }}
             bg="secondary.400"
         >
-            <Image src={movie.Poster} alt={movie.Title} objectFit="cover" />
+            <Image
+                src={movie.Poster}
+                alt={movie.Title}
+                objectFit="cover"
+                w="100%"
+                h="100%"
+            />
             <Text fontWeight="bold" mt="2" fontSize="lg">
                 {movie.Title}
             </Text>

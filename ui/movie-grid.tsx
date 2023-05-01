@@ -11,7 +11,7 @@ const MovieGrid = ({ movies, handleBookmarkClick }: MovieGridProps) => {
                 lg: "repeat(3, 1fr)",
                 xl: "repeat(4, 1fr)",
             }}
-            gap="4"
+            gap="8"
             my="8"
         >
             {movies.map((movie: Movie) => (
