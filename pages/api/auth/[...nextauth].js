@@ -1,23 +1,18 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import connectMongo from "../../../lib/db";
 import { verifyPassword } from "../../../lib/auth";
 import User from "@/models/user";
 import mongoose from "mongoose";
 
-interface Credentials {
-    email: string;
-    password: string;
-}
-
 const Bookmark =
     mongoose.models.Bookmark || require("@/models/bookmark").default;
 
-export const authOptions: AuthOptions = {
+export const authOptions = {
     session: { strategy: "jwt" },
     providers: [
         CredentialsProvider({
-            async authorize(credentials: Credentials) {
+            async authorize(credentials) {
                 await connectMongo();
                 const user = await User.findOne({ email: credentials.email });
 

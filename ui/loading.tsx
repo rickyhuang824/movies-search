@@ -19,8 +19,6 @@ const Loading = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            width="100%"
-            height="100%"
         >
             <Center height="60vh" width="100%">
                 <Spinner
@@ -30,12 +28,8 @@ const Loading = () => {
                     emptyColor="gray.200"
                     color="teal.500"
                     mr="4"
-                    animate="end"
-                    variants={spinnerVariants}
                 />
                 <motion.span
-                    fontSize="2xl"
-                    fontWeight="bold"
                     color="gray.600"
                     animate={{
                         y: [-3, 3],

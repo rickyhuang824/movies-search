@@ -25,7 +25,7 @@ const handler = async (req, res) => {
 
         try {
             await connectMongo();
-        } catch (err: any) {
+        } catch (err) {
             res.status(500).json({ message: err.message });
             return;
         }

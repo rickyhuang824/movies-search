@@ -82,9 +82,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ isSignIn }) => {
                     <form onSubmit={formik.handleSubmit}>
                         <FormControl
                             mb="4"
-                            isInvalid={
+                            isInvalid={Boolean(
                                 formik.touched.email && formik.errors.email
-                            }
+                            )}
                         >
                             <FormLabel>Email</FormLabel>
                             <Input
@@ -103,10 +103,10 @@ const AuthForm: React.FC<AuthFormProps> = ({ isSignIn }) => {
                         </FormControl>
                         <FormControl
                             mb="4"
-                            isInvalid={
+                            isInvalid={Boolean(
                                 formik.touched.password &&
-                                formik.errors.password
-                            }
+                                    formik.errors.password
+                            )}
                         >
                             <FormLabel>Password</FormLabel>
                             <Input

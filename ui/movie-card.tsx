@@ -1,12 +1,4 @@
-import {
-    Box,
-    Text,
-    Image,
-    IconButton,
-    Button,
-    Icon,
-    Flex,
-} from "@chakra-ui/react";
+import { Box, Text, Image, Button, Icon, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { Movie } from "@/interfaces/movies";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
