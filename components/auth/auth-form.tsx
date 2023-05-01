@@ -43,8 +43,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ isSignIn }) => {
             try {
                 const result = await createUser(values.email, values.password);
                 formik.resetForm();
-            } catch (err) {
-                console.error(err);
+                if (result && !result.error) {
+                    router.replace("/signin");
+                }
+                console.log(result);
+            } catch (err: any) {
+                console.log(err);
             }
         } else {
             const result = await signIn("credentials", {

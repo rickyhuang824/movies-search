@@ -2,7 +2,7 @@ import { MovieGridProps, Movie } from "@/interfaces/movies";
 import { Grid, GridItem } from "@chakra-ui/react";
 import MovieCard from "./movie-card";
 
-const MovieGrid = ({ movies }: MovieGridProps) => {
+const MovieGrid = ({ movies, handleBookmarkClick }: MovieGridProps) => {
     return (
         <Grid
             templateColumns={{
@@ -16,7 +16,10 @@ const MovieGrid = ({ movies }: MovieGridProps) => {
         >
             {movies.map((movie: Movie) => (
                 <GridItem key={movie.imdbID}>
-                    <MovieCard movie={movie} />
+                    <MovieCard
+                        movie={movie}
+                        handleBookmarkClick={handleBookmarkClick}
+                    />
                 </GridItem>
             ))}
         </Grid>

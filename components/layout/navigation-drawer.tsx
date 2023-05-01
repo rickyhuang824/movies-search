@@ -40,7 +40,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                         </Button>
                         <Button
                             as={NextLink}
-                            href="/"
+                            href="/search"
                             fontSize="lg"
                             onClick={onClose}
                             mb={4}
@@ -48,24 +48,26 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                         >
                             Search
                         </Button>
-                        <Button
-                            as={NextLink}
-                            href="/"
-                            fontSize="lg"
-                            onClick={onClose}
-                            mb={4}
-                            colorScheme="purple"
-                        >
-                            Bookmarks
-                        </Button>
                         {session && status === "authenticated" ? (
-                            <Button
-                                colorScheme="purple"
-                                onClick={() => signOut()}
-                                fontSize="lg"
-                            >
-                                Logout
-                            </Button>
+                            <>
+                                <Button
+                                    as={NextLink}
+                                    href="/bookmark"
+                                    fontSize="lg"
+                                    onClick={onClose}
+                                    mb={4}
+                                    colorScheme="purple"
+                                >
+                                    Bookmarks
+                                </Button>
+                                <Button
+                                    colorScheme="purple"
+                                    onClick={() => signOut()}
+                                    fontSize="lg"
+                                >
+                                    Logout
+                                </Button>
+                            </>
                         ) : (
                             <>
                                 <Button
@@ -81,7 +83,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                                 <Button
                                     colorScheme="purple"
                                     as={NextLink}
-                                    href="/"
+                                    href="/signup"
                                     onClick={onClose}
                                     mb={4}
                                     fontSize="lg"

@@ -1,20 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import AuthForm from "@/components/auth/auth-form";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { useSession } from "next-auth/react";
+import { BookmarksContext } from "@/store/bookmarks-context";
+import { Movie } from "@/interfaces/movies";
+import MovieGrid from "@/ui/movie-grid";
+import { Flex } from "@chakra-ui/react";
+import BookmarkList from "@/components/bookmarks-page/bookmark-list";
 
 const BookmarkPage = () => {
-    const { data: session } = useSession();
+    const { bookmarks, removeBookmark } = useContext(BookmarksContext);
+    const bookmarksMoviesWithFlag = bookmarks.map((bookmarkMovie) => ({
+        ...bookmarkMovie,
+        isBookmarked: true,
+    }));
 
-    if (!session) {
-        return <div>You need to sign in to access this page</div>;
-    }
-    console.log(session);
+    const handleBookmarkClick = (movie: Movie) => {
+        removeBookmark(movie);
+    };
 
-    const { user } = session;
-
-    return <div></div>;
+    return (
+        <Flex width="80%" justify="center" mx="auto" mt={12}>
+            {bookmarksMoviesWithFlag.length > 0 ? (
+                <BookmarkList
+                    bookmarksMovies={bookmarksMoviesWithFlag}
+                    handleBookmarkClick={handleBookmarkClick}
+                />
+            ) : (
+                <div>You have no bookmarked movies! Go add some</div>
+            )}
+        </Flex>
+    );
 };
 
 export const getServerSideProps = async (context) => {

@@ -10,13 +10,20 @@ import {
 import { motion } from "framer-motion";
 import { Movie } from "@/interfaces/movies";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
-import { useContext } from "react";
-import { BookmarksContext } from "@/store/bookmarks-context";
 
 const MotionBox = motion(Box);
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
-    const bookmarksCtx = useContext(BookmarksContext);
+const MovieCard = ({
+    movie,
+    handleBookmarkClick,
+}: {
+    movie: Movie;
+    handleBookmarkClick: (movie: Movie) => void;
+}) => {
+    const onBookmarkClick = () => {
+        handleBookmarkClick(movie);
+    };
+
     return (
         <MotionBox
             p="4"
@@ -42,18 +49,16 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
                     variant="ghost"
                     colorScheme="black"
                     aria-label="Bookmark"
-                    onClick={() => {
-                        bookmarksCtx.addBookmark(movie);
-                    }}
+                    onClick={onBookmarkClick}
                     _hover={{ bg: "primary.300" }}
                     _active={{ bg: "blue.700" }}
                 >
                     <Icon
-                        as={true ? BsHeartFill : BsHeart}
-                        color={true ? "red.500" : "currentColor"}
+                        as={movie.isBookmarked ? BsHeartFill : BsHeart}
+                        color={movie.isBookmarked ? "red.500" : "currentColor"}
                         mr="1"
                     />
-                    Bookmark
+                    {movie.isBookmarked ? "Bookmarked" : "Bookmarked"}
                 </Button>
             </Flex>
         </MotionBox>

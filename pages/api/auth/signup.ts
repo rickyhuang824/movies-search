@@ -14,6 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             password.trim().length < 7
         ) {
             res.status(422).json({ message: "Invalid email or password" });
+            return;
         }
 
         try {
