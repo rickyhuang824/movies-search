@@ -14,7 +14,7 @@ import NavigationDrawer from "./navigation-drawer";
 import SpinnerDiv from "@/ui/spinner-div";
 
 const Navbar = () => {
-    // const [session] = useSession();
+    const { data: session, status } = useSession();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     return (
@@ -73,9 +73,16 @@ const Navbar = () => {
                     >
                         Search
                     </Link>
-                    <Link as={NextLink} mx={2} href={"/"} fontWeight="bold">
-                        Bookmark
-                    </Link>
+                    {session && (
+                        <Link
+                            as={NextLink}
+                            mx={2}
+                            href={"/bookmark"}
+                            fontWeight="bold"
+                        >
+                            Bookmark
+                        </Link>
+                    )}
                 </Flex>
 
                 <Flex
@@ -84,8 +91,12 @@ const Navbar = () => {
                     flex="2"
                     justify="end"
                 >
-                    {false ? (
-                        <Button onClick={() => signOut()} mr={4}>
+                    {session && status === "authenticated" ? (
+                        <Button
+                            onClick={() => signOut()}
+                            mr={4}
+                            colorScheme="purple"
+                        >
                             Logout
                         </Button>
                     ) : (
@@ -95,14 +106,14 @@ const Navbar = () => {
                                 variant="outline"
                                 as={NextLink}
                                 mr={4}
-                                href={"/sign-in"}
+                                href={"/signin"}
                             >
                                 Sign In
                             </Button>
                             <Button
                                 colorScheme="purple"
                                 as={NextLink}
-                                href={"/"}
+                                href={"/signup"}
                             >
                                 Sign Up
                             </Button>

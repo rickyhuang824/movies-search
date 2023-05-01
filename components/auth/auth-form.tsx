@@ -12,6 +12,9 @@ import {
     Card,
     Flex,
 } from "@chakra-ui/react";
+import { createUser } from "@/helpers/api-utils";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 interface AuthFormProps {
     isSignIn: boolean;
@@ -19,6 +22,7 @@ interface AuthFormProps {
 
 const AuthForm: React.FC<AuthFormProps> = ({ isSignIn }) => {
     const [isLoading, setIsLoading] = useState(false);
+    const router = useRouter();
 
     const initialValues = {
         email: "",
@@ -27,13 +31,34 @@ const AuthForm: React.FC<AuthFormProps> = ({ isSignIn }) => {
 
     const validationSchema = Yup.object({
         email: Yup.string().email("Invalid email address").required("Required"),
-        password: Yup.string().required("Required"),
+        password: Yup.string()
+            .required("Required")
+            .min(7, "Must be at least 7 characters long"),
     });
 
     const onSubmit = async (values: typeof initialValues) => {
         setIsLoading(true);
-        // Send form data to API endpoint
-        // ...
+
+        if (!isSignIn) {
+            try {
+                const result = await createUser(values.email, values.password);
+                formik.resetForm();
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            const result = await signIn("credentials", {
+                redirect: false,
+                email: values.email,
+                password: values.password,
+            });
+
+            if (result && !result.error) {
+                router.replace("/search");
+            }
+            console.log(result);
+        }
+
         setIsLoading(false);
     };
 

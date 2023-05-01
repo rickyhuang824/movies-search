@@ -8,7 +8,7 @@ import {
     Flex,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 interface NavigationDrawerProps {
     onClose: () => void;
@@ -19,6 +19,8 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
     onClose,
     isOpen,
 }) => {
+    const { data: session, status } = useSession();
+
     return (
         <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
@@ -56,11 +58,11 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                         >
                             Bookmarks
                         </Button>
-                        {false ? (
+                        {session && status === "authenticated" ? (
                             <Button
                                 colorScheme="purple"
                                 onClick={() => signOut()}
-                                mr={4}
+                                fontSize="lg"
                             >
                                 Logout
                             </Button>
@@ -69,7 +71,7 @@ const NavigationDrawer: React.FC<NavigationDrawerProps> = ({
                                 <Button
                                     colorScheme="purple"
                                     as={NextLink}
-                                    href="/"
+                                    href="/signin"
                                     onClick={onClose}
                                     mb={4}
                                     fontSize="lg"
