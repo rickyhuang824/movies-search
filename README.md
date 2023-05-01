@@ -25,5 +25,9 @@
     -   `NextJS API` Routes
     -   `MongoDB` for Databases with User Collections and Bookmark Collections
 
+-   Need to add:
+
+    -   `express-rate-limit` for rate limit the api call
+
 -   Deployment:
     -   `Vercel`
